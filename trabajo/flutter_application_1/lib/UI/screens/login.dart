@@ -1,51 +1,78 @@
 import 'package:flutter/material.dart';
-
-
+import 'package: flutter_application_social/USER/UI/widget/textInput.dart';
+import 'package: flutter_application_social/USER/UI/widget/googlebotton.dart';
+import 'package: flutter_application_social/USER/UI/bloc/bloc1.dart';
+import 'package: generic_bloc_provider/generic_blog_provider.dart';
+import: 'package:firebase_auth/firebase_auth.dart';
 class Login extends StatelessWidget {
+  late BlocUser blocUser;
+  final _controllerUsername= TextEditingController();
+  final _controllerUsername= TextEditingController();
   @override
   Widget build(BuildContext context) {
-    
+  blocUser= BlocProvider.of(context);
+    return __controlSession();
+  }
+
+  Widget __controlSession(){
+    return StreamBuilder(
+      stream: blocUser.authStatus,
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+        if (!snapshot.hasData || snapshot.hasError){
+          return loginApp();
+        }else{
+          return Profile();
+        }
+      });
+}
+  Widget loginApp(){
       return Scaffold(
-        backgroundColor: Colors.blue,
-        body: Stack(
-          fit: StackFit.expand,
-          children:[ Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(
-                color: Colors.green,
-                width: 300,
-              ),
-              
-              
-            ),
-           / child: TextField(
-              decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.all(20),
-                  fillColor: Colors.white,
-                  hintText: "Login:",
-                  hintStyle: TextStyle(color: Colors.grey)),
-            ),
-          ),
-          ],
-          Container(
-            margin: EdgeInsets.only(top:30),
-            child: RaisedButton(
-              color: Colors.green[600],
-              onPressed: () {},
-              child: Text(
-                "Ingrese",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14
+        
+        body: Container(
+          
+          child: ListView(children:<Widget>[
+            Container(
+              height: 250.0;
+              width: 250.0;
+              margin: EdgeInsets.only(top:15.0),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.contain,
+                  image: AssetImage("assets/img/logo.webp"),
+
+                
                 ),
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                shape: BoxShape.rectangle,
+
               ),
+            ),
+            Container(height:40.0,
+            margin: EdgeInsets.only(top:15.0),
+            child: Text("nombre aplicacion",textAlign: TextAlign.center,style: TextStyle(fontSize: 30),),),
+            Container(margin: EdgeInsets.only(top:15.0),
+            child: TextInput(hintText: "username", inputType: TextInputType.name,controller:
+            _controllerUsername,maxLines: 1)
+            ),
+            Container(margin: EdgeInsets.only(top:15.0),
+            child: TextInput(hintText:"password",inputType: TextInputType.text,
+            controller: _controllerHobbies)),
+            Container(
+              child:Center(child: MaterialButton(minWidth: 100.0,height: 40.0,inPressed:(){},
+              color: Colors.lightBlue),
+              child: Text('Sumit',style: TextStyle(color: Colors.white)
+              ),),),
 
             ),
-            ),
-        ),
-        
+            GoogleButton(text: "login with  gmail", onPressed:(){
+              blocUser.singIn().then((UserCredential user)=>print("Usted se a autenticado como ${user.user}"));
+            },
+             heightC:20, widthC:30, )
+          ],
+          ]
+            
       
     );
   }
+}
 }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1051972705616",
+    "project_id": "repaso-d7cfe",
+    "storage_bucket": "repaso-d7cfe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051972705616:android:8f4f371e0a1507966a2055",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1051972705616-scpeipvh62tek9295j3mrf0bniqef14i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRLevyb3U13pCca9GuMKRH8-QBG5qRUcE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1051972705616-scpeipvh62tek9295j3mrf0bniqef14i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+    
+  ],
+  "configuration_version": "1"
+}
